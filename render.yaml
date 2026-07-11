@@ -1,12 +1,15 @@
 services:
   - type: web
-    name: PT-Quana-Raya
+    name: pt-quana-raya
     env: php
     region: singapore
     plan: free
-    buildCommand: |
-      composer install --optimize-autoloader --no-dev
-      php artisan config:cache
-      php artisan route:cache
-      php artisan view:cache
-    startCommand: heroku-php-apache2 public/
+    buildCommand: "composer install --optimize-autoloader --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache"
+    startCommand: "heroku-php-apache2 public/"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        value: "base64:FMVCWU3fnvuZTa5Uo6GAOBIoDIOUNkl8vHlc6UzB7Zw="
