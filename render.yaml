@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: pt-quana-raya-shakatama
+    name: PT-Quana-Raya
     env: php
     region: singapore
     plan: free
@@ -9,4 +9,4 @@ services:
       php artisan config:cache
       php artisan route:cache
       php artisan view:cache
-    startCommand: "heroku-php-apache2 public/"
+    startCommand: heroku-php-apache2 public/
