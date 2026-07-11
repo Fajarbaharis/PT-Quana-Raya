@@ -52,20 +52,17 @@
            SCROLL REVEAL ANIMATIONS
            ============================================ */
         
-        /* Initial state: hidden dan geser ke bawah */
         .reveal {
             opacity: 0;
             transform: translateY(60px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         
-        /* Active state: visible dan posisi normal */
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
         
-        /* Variant: dari kiri */
         .reveal-left {
             opacity: 0;
             transform: translateX(-60px);
@@ -77,7 +74,6 @@
             transform: translateX(0);
         }
         
-        /* Variant: dari kanan */
         .reveal-right {
             opacity: 0;
             transform: translateX(60px);
@@ -89,7 +85,6 @@
             transform: translateX(0);
         }
         
-        /* Variant: scale up */
         .reveal-scale {
             opacity: 0;
             transform: scale(0.9);
@@ -101,7 +96,6 @@
             transform: scale(1);
         }
         
-        /* Stagger delay untuk child elements */
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
@@ -113,7 +107,6 @@
            EXISTING STYLES
            ============================================ */
         
-        /* Pattern Background untuk Section Hijau */
         .pattern-bg {
             position: relative;
             overflow: hidden;
@@ -139,7 +132,6 @@
             z-index: 1;
         }
         
-        /* Dots Pattern untuk Footer */
         .dots-pattern {
             position: relative;
         }
@@ -162,7 +154,6 @@
             z-index: 1;
         }
         
-        /* Gradient untuk Icon Circles */
         .gradient-icon-circle {
             background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
             position: relative;
@@ -185,7 +176,6 @@
             opacity: 1;
         }
         
-        /* Gradient untuk Buttons */
         .gradient-btn {
             background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
             position: relative;
@@ -207,7 +197,6 @@
             left: 100%;
         }
         
-        /* Navbar Logo Gradient */
         .logo-gradient {
             background: linear-gradient(135deg, #d4a84c 0%, #064e3b 100%);
             position: relative;
@@ -263,7 +252,6 @@
             transform: translateY(-2px);
         }
         
-        /* Service Card Styles */
         .service-card {
             transition: all 0.3s ease;
             border: 1px solid #e5e7eb;
@@ -319,15 +307,64 @@
             transform: translateX(5px);
         }
         
+        /* ============================================
+           FEATURE ICON BOX - DENGAN EFEK BAYANGAN HALUS
+           ============================================ */
         .feature-icon-box {
             background: white;
             border: 1px solid #e5e7eb;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 4px 6px rgba(6, 78, 59, 0.06),
+                0 10px 20px rgba(6, 78, 59, 0.08),
+                inset 0 0 0 1px rgba(6, 78, 59, 0.03);
+        }
+        
+        /* Gradient bayangan halus di pojok (tetap dominan putih) */
+        .feature-icon-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(6, 78, 59, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 100% 100%, rgba(212, 168, 76, 0.08) 0%, transparent 45%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Pattern dots halus untuk tekstur */
+        .feature-icon-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle, rgba(6, 78, 59, 0.12) 1px, transparent 1px);
+            background-size: 10px 10px;
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Pastikan icon dan teks tetap di atas pattern */
+        .feature-icon-box i,
+        .feature-icon-box > div {
+            position: relative;
+            z-index: 1;
         }
         
         .feature-item:hover .feature-icon-box {
             border-color: #064e3b;
-            box-shadow: 0 4px 12px rgba(6, 78, 59, 0.1);
+            box-shadow: 
+                0 8px 16px rgba(6, 78, 59, 0.12),
+                0 16px 32px rgba(6, 78, 59, 0.15),
+                inset 0 0 0 1px rgba(6, 78, 59, 0.08);
         }
         
         .value-item {
@@ -408,7 +445,6 @@
             transform: scale(1.1);
         }
         
-        /* Contact CTA Styles */
         .contact-icon-circle {
             background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
             position: relative;
@@ -448,7 +484,6 @@
             color: #d4a84c;
         }
         
-        /* Footer Styles */
         .footer-link {
             transition: all 0.3s ease;
             position: relative;
@@ -486,7 +521,7 @@
 <body class="bg-white text-gray-800">
 
     <!-- Navbar -->
-        <nav class="bg-white shadow-sm fixed w-full z-50 border-b border-gray-100">
+    <nav class="bg-white shadow-sm fixed w-full z-50 border-b border-gray-100">
         <div class="container mx-auto px-6 lg:px-12">
             <div class="flex justify-between items-center py-4">
                 <!-- Logo Section -->
@@ -508,7 +543,7 @@
                 <!-- Navigation Links - Desktop -->
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="#home" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">About Us</a>
+                    <a href="#home" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">About Us</a>
                     <a href="#services" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Our Services</a>
                     <a href="#platform" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Carbontalk.id</a>
                     <a href="#why-us" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Why Us</a>
@@ -569,7 +604,7 @@
                     <div class="relative z-10">
                         <img src="{{ asset('images/sustainability-bg.jpg') }}" 
                              alt="Sustainable Energy" 
-                             class="w-full h-auto rounded-2xl shadow-xl">
+                             class="w-full h-auto [mask-image:linear-gradient(to_right,transparent,black_30%)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_30%)]">
                         
                         <!-- Gradient Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-transparent opacity-10 rounded-2xl pointer-events-none"></div>
@@ -586,7 +621,7 @@
                 <h2 class="text-4xl lg:text-5xl font-black text-primary-dark mb-4 tracking-tight">OUR SERVICES</h2>
                 <div class="w-16 h-1 bg-accent-yellow mx-auto mb-6"></div>
                 <p class="text-gray-600 max-w-3xl mx-auto text-base lg:text-lg leading-relaxed">
-                    We provide a wide range of consulting, engineering, inspection, training, and construction services to support your business performance and compliance.
+                    We provide a wide range of consulting, engineering, inspection, training,<br> and construction services to support your business performance and compliance.
                 </p>
             </div>
             
@@ -599,8 +634,7 @@
                             <i class="fas fa-leaf text-white text-2xl relative z-10"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            Carbon Solutions<br>
-                            <span class="text-base font-semibold text-gray-700">via carbontalk.id</span>
+                            Carbon Solutions<br>via carbontalk.id
                         </h3>
                     </div>
                     <p class="text-gray-600 text-sm leading-relaxed mb-5">
@@ -618,8 +652,7 @@
                             <i class="fas fa-user-friends text-white text-2xl relative z-10"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            Management System<br>
-                            <span class="text-base font-semibold text-gray-700">Consulting & Training</span>
+                            Management System<br>Consulting & Training
                         </h3>
                     </div>
                     <p class="text-gray-600 text-sm leading-relaxed mb-5">
@@ -637,8 +670,7 @@
                             <i class="fas fa-search text-white text-2xl relative z-10"></i>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            Inspection &<br>
-                            <span class="text-base font-semibold text-gray-700">Technical Testing</span>
+                            Inspection &<br>Technical Testing
                         </h3>
                     </div>
                     <p class="text-gray-600 text-sm leading-relaxed mb-5">
@@ -913,9 +945,9 @@
     </section>
 
     <!-- WHY CHOOSE US Section -->
-    <section id="why-us" class="py-20 bg-white">
+    <section id="why-us" class="py-12 bg-white">
         <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 
                 <div class="lg:w-1/2 reveal-left">
                     <div class="relative">
@@ -927,18 +959,17 @@
                 </div>
                 
                 <div class="lg:w-1/2 reveal-right">
-                    <span class="text-sm font-bold text-accent-gold tracking-widest uppercase mb-4 block">WHY CHOOSE US</span>
+                    <span class="text-sm font-bold text-accent-gold tracking-widest uppercase mb-3 block">WHY CHOOSE US</span>
                     
-                    <h2 class="text-3xl lg:text-4xl font-black text-gray-900 mb-6 leading-tight">
-                        Your Trusted Partner for<br>
-                        <span class="text-primary-dark">Sustainable Performance</span>
+                    <h2 class="text-3xl lg:text-4xl font-black text-gray-900 mb-4 leading-tight">
+                        Your Trusted Partner for Sustainable Performance
                     </h2>
                     
-                    <p class="text-gray-600 text-base leading-relaxed mb-8">
+                    <p class="text-gray-600 text-base leading-relaxed mb-6">
                         We combine expertise, innovation, and integrity to deliver solutions that create real impact for your business and the environment.
                     </p>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-3">
                         <div class="checkmark-item flex items-center space-x-4 reveal reveal-delay-1">
                             <div class="checkmark-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-check text-white text-sm relative z-10"></i>
@@ -974,49 +1005,45 @@
     </section>
 
     <!-- HAPPY TO HELP YOUR BUSINESS (Contact CTA) Section -->
-    <section id="contact" class="py-16 bg-gray-100">
+    <section id="contact" class="py-8 bg-gray-100">
         <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10">
                 
                 <!-- Left: Icon + Text -->
-                <div class="flex items-center space-x-6 lg:w-2/5 reveal-left">
-                    <!-- Handshake Icon Circle dengan Gradient -->
+                <div class="flex items-center space-x-5 lg:w-2/5 reveal-left">
                     <div class="contact-icon-circle w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                         <i class="fas fa-handshake text-white text-4xl relative z-10"></i>
                     </div>
                     
-                    <!-- Text Content -->
                     <div>
                         <h2 class="font-serif text-2xl lg:text-3xl font-bold text-gray-900 italic mb-2 leading-tight">
                             Happy to Help Your Business
                         </h2>
-                        <p class="text-gray-600 text-sm leading-relaxed">
+                        <p class="text-gray-600 text-sm leading-relaxed max-w-md">
                             We are ready to support your business with the right solutions. Feel free to contact us anytime. We look forward to working with you!
                         </p>
                     </div>
                 </div>
                 
                 <!-- Middle: Contact Info -->
-                <div class="flex flex-col space-y-3 lg:w-1/3 reveal">
-                    <!-- Email -->
+                <div class="flex flex-col space-y-3 lg:w-1/4 reveal">
                     <div class="contact-method flex items-center space-x-3">
-                        <i class="fas fa-envelope contact-icon text-primary-dark text-xl w-6"></i>
-                        <a href="mailto:office@qrstama.com" class="text-gray-800 font-semibold hover:text-primary-dark transition">
+                        <i class="fas fa-envelope contact-icon text-primary-dark text-xl"></i>
+                        <a href="mailto:office@qrstama.com" class="text-gray-800 font-semibold text-base hover:text-primary-dark transition">
                             office@qrstama.com
                         </a>
                     </div>
                     
-                    <!-- WhatsApp -->
                     <div class="contact-method flex items-center space-x-3">
-                        <i class="fab fa-whatsapp contact-icon text-primary-dark text-2xl w-6"></i>
-                        <a href="https://wa.me/6281119051196" target="_blank" class="text-gray-800 font-semibold hover:text-primary-dark transition">
+                        <i class="fab fa-whatsapp contact-icon text-primary-dark text-2xl"></i>
+                        <a href="https://wa.me/6281119051196" target="_blank" class="text-gray-800 font-semibold text-base hover:text-primary-dark transition">
                             081119051196
                         </a>
                     </div>
                 </div>
                 
                 <!-- Right: CTA Button dengan Gradient -->
-                <div class="lg:w-1/5 flex justify-center lg:justify-end reveal-right">
+                <div class="lg:w-auto flex justify-center lg:justify-end reveal-right">
                     <a href="mailto:office@qrstama.com" class="gradient-btn inline-flex items-center text-white px-8 py-4 rounded-lg font-semibold space-x-2 shadow-lg">
                         <span>Contact Us</span>
                         <i class="fas fa-arrow-right text-sm"></i>
@@ -1035,7 +1062,6 @@
                 <!-- Column 1: Company Info -->
                 <div class="reveal reveal-delay-1">
                     <div class="flex items-center space-x-4 mb-5">
-                        <!-- Logo Placeholder dengan Gradient -->
                         <div class="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
                             <div class="logo-gradient absolute inset-0 transform rotate-45 rounded-lg opacity-90"></div>
                             <div class="relative z-10 text-white font-bold text-2xl">Q</div>
@@ -1058,7 +1084,7 @@
                     <h4 class="text-lg font-bold mb-4">Quick Links</h4>
                     <ul class="space-y-2.5">
                         <li><a href="#home" class="footer-link text-gray-300 text-sm inline-block">Home</a></li>
-                        <li><a href="#about" class="footer-link text-gray-300 text-sm inline-block">About Us</a></li>
+                        <li><a href="#home" class="footer-link text-gray-300 text-sm inline-block">About Us</a></li>
                         <li><a href="#services" class="footer-link text-gray-300 text-sm inline-block">Our Services</a></li>
                         <li><a href="#platform" class="footer-link text-gray-300 text-sm inline-block">Carbontalk.id</a></li>
                         <li><a href="#why-us" class="footer-link text-gray-300 text-sm inline-block">Why Us</a></li>
@@ -1070,11 +1096,10 @@
                 <div class="reveal reveal-delay-3">
                     <h4 class="text-lg font-bold mb-4">Our Platform</h4>
                     
-                    <!-- Carbontalk.id Logo dengan Gradient -->
                     <div class="flex items-center space-x-3 mb-3">
-                        <div class="relative w-12 h-12 flex items-center justify-center flex-shrink-0">
+                        <div class="relative w-14 h-14 flex items-center justify-center">
                             <div class="gradient-icon-circle absolute inset-0 rounded-full"></div>
-                            <i class="fas fa-leaf text-primary-dark text-xl relative z-10"></i>
+                            <i class="fas fa-leaf text-accent-gold text-2xl relative z-10"></i>
                         </div>
                         <div>
                             <div class="text-2xl font-black tracking-tight">carbontalk.id</div>
@@ -1086,7 +1111,7 @@
                         The business platform that help organizations measure, analyze, and reduce their carbon footprint.
                     </p>
                     
-                    <a href="https://carbontalk.id" target="_blank" class="inline-flex items-center text-white font-semibold text-sm hover:text-accent-gold transition group">
+                    <a href="#platform" class="inline-flex items-center text-white font-semibold text-sm hover:text-accent-gold transition group">
                         <span>Visit Website</span>
                         <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
                     </a>
@@ -1127,30 +1152,24 @@
          ============================================ -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Konfigurasi Intersection Observer
             const observerOptions = {
-                root: null, // viewport
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.15 // Elemen harus 15% terlihat untuk trigger
+                threshold: 0.15
             };
             
-            // Callback function saat elemen masuk/keluar viewport
             const observerCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Elemen masuk viewport → tambahkan class active
                         entry.target.classList.add('active');
                     } else {
-                        // Elemen keluar viewport → hapus class active (animasi ulang saat scroll kembali)
                         entry.target.classList.remove('active');
                     }
                 });
             };
             
-            // Buat observer
             const observer = new IntersectionObserver(observerCallback, observerOptions);
             
-            // Observe semua elemen dengan class reveal
             const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
             revealElements.forEach(el => observer.observe(el));
         });
