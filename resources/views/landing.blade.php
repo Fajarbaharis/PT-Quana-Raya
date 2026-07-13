@@ -1,1179 +1,302 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT. Quana Raya Shakatama - Integrated Solutions</title>
-    
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts - Inter + Playfair Display -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            dark: '#064e3b',
-                            DEFAULT: '#1a5f4a',
-                            light: '#2d8a6e',
-                        },
-                        accent: {
-                            gold: '#d4a84c',
-                            yellow: '#f0c84a',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        html { scroll-behavior: smooth; }
-        
-        /* ============================================
-           SCROLL REVEAL ANIMATIONS
-           ============================================ */
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        
-        .reveal-scale.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        .reveal-delay-5 { transition-delay: 0.5s; }
-        .reveal-delay-6 { transition-delay: 0.6s; }
-        
-        /* ============================================
-           EXISTING STYLES
-           ============================================ */
-        
-        .pattern-bg {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .pattern-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(212, 168, 76, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(212, 168, 76, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .pattern-bg > * {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .dots-pattern {
-            position: relative;
-        }
-        
-        .dots-pattern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-            background-size: 30px 30px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .dots-pattern > * {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .gradient-icon-circle {
-            background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gradient-icon-circle::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 168, 76, 0.2) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gradient-icon-circle:hover::before {
-            opacity: 1;
-        }
-        
-        .gradient-btn {
-            background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gradient-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .gradient-btn:hover::before {
-            left: 100%;
-        }
-        
-        .logo-gradient {
-            background: linear-gradient(135deg, #d4a84c 0%, #064e3b 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logo-gradient::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-        }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 50%;
-            background: linear-gradient(90deg, #064e3b, #d4a84c);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(6, 78, 59, 0.3);
-        }
-        
-        .btn-secondary {
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            background-color: rgba(6, 78, 59, 0.05);
-            transform: translateY(-2px);
-        }
-        
-        .service-card {
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-            border-color: #1a5f4a;
-        }
-        
-        .service-icon-circle {
-            background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .service-icon-circle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(212, 168, 76, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .service-card:hover .service-icon-circle::before {
-            opacity: 1;
-        }
-        
-        .service-card:hover .service-icon-circle {
-            transform: scale(1.05);
-        }
-        
-        .learn-more-link {
-            transition: all 0.3s ease;
-        }
-        
-        .learn-more-link:hover {
-            color: #064e3b;
-            letter-spacing: 0.5px;
-        }
-        
-        .feature-item {
-            transition: all 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            transform: translateX(5px);
-        }
-        
-        /* ============================================
-           FEATURE ICON BOX - DENGAN EFEK BAYANGAN HALUS
-           ============================================ */
-        .feature-icon-box {
-            background: white;
-            border: 1px solid #e5e7eb;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 
-                0 4px 6px rgba(6, 78, 59, 0.06),
-                0 10px 20px rgba(6, 78, 59, 0.08),
-                inset 0 0 0 1px rgba(6, 78, 59, 0.03);
-        }
-        
-        /* Gradient bayangan halus di pojok (tetap dominan putih) */
-        .feature-icon-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 0% 0%, rgba(6, 78, 59, 0.06) 0%, transparent 45%),
-                radial-gradient(circle at 100% 100%, rgba(212, 168, 76, 0.08) 0%, transparent 45%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        /* Pattern dots halus untuk tekstur */
-        .feature-icon-box::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: radial-gradient(circle, rgba(6, 78, 59, 0.12) 1px, transparent 1px);
-            background-size: 10px 10px;
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        /* Pastikan icon dan teks tetap di atas pattern */
-        .feature-icon-box i,
-        .feature-icon-box > div {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .feature-item:hover .feature-icon-box {
-            border-color: #064e3b;
-            box-shadow: 
-                0 8px 16px rgba(6, 78, 59, 0.12),
-                0 16px 32px rgba(6, 78, 59, 0.15),
-                inset 0 0 0 1px rgba(6, 78, 59, 0.08);
-        }
-        
-        .value-item {
-            position: relative;
-        }
-        
-        .value-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 60%;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, rgba(212, 168, 76, 0.5), transparent);
-        }
-        
-        .value-icon-circle {
-            border: 2px solid #d4a84c;
-            background: linear-gradient(135deg, rgba(6, 78, 59, 0.8) 0%, rgba(26, 95, 74, 0.6) 100%);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .value-icon-circle::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 168, 76, 0.4) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .value-item:hover .value-icon-circle::before {
-            opacity: 1;
-        }
-        
-        .value-item:hover .value-icon-circle {
-            transform: scale(1.05);
-        }
-        
-        .checkmark-item {
-            transition: all 0.3s ease;
-        }
-        
-        .checkmark-item:hover {
-            transform: translateX(5px);
-        }
-        
-        .checkmark-icon {
-            background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .checkmark-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(212, 168, 76, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .checkmark-item:hover .checkmark-icon::before {
-            opacity: 1;
-        }
-        
-        .checkmark-item:hover .checkmark-icon {
-            transform: scale(1.1);
-        }
-        
-        .contact-icon-circle {
-            background: linear-gradient(135deg, #064e3b 0%, #1a5f4a 100%);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-icon-circle::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 168, 76, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .contact-icon-circle:hover::before {
-            opacity: 1;
-        }
-        
-        .contact-icon-circle:hover {
-            transform: rotate(-5deg) scale(1.05);
-        }
-        
-        .contact-method {
-            transition: all 0.3s ease;
-        }
-        
-        .contact-method:hover {
-            transform: translateX(5px);
-        }
-        
-        .contact-method:hover .contact-icon {
-            color: #d4a84c;
-        }
-        
-        .footer-link {
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .footer-link::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 1px;
-            background: linear-gradient(90deg, #d4a84c, transparent);
-            transition: width 0.3s ease;
-        }
-        
-        .footer-link:hover::before {
-            width: 100%;
-        }
-        
-        .footer-link:hover {
-            color: #d4a84c;
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-3px);
-            color: #d4a84c;
-        }
-    </style>
-</head>
-<body class="bg-white text-gray-800">
+@extends('app')
 
-    <!-- Navbar -->
-    <nav class="bg-white shadow-sm fixed w-full z-50 border-b border-gray-100">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex justify-between items-center py-4">
-                <!-- Logo Section -->
-                <div class="flex items-center space-x-4">
-                    <!-- Logo Placeholder - Hexagon Shape dengan Gradient -->
-                    <div class="relative w-16 h-16 flex items-center justify-center">
-                        <div class="logo-gradient absolute inset-0 transform rotate-45 rounded-lg opacity-90"></div>
-                        <div class="relative z-10 text-white font-bold text-2xl">Q</div>
-                    </div>
-                    <!-- Company Name -->
-                    <div class="flex flex-col">
-                        <span class="text-lg font-bold text-primary-dark leading-tight tracking-tight">PT. QUANA RAYA</span>
-                        <span class="text-lg font-bold text-primary-dark leading-tight tracking-tight">SHAKATAMA</span>
-                        <span class="text-[10px] font-semibold text-gray-600 tracking-wider mt-1">INTEGRATED SOLUTIONS</span>
-                        <span class="text-[10px] font-semibold text-gray-600 tracking-wider">FOR A SUSTAINABLE FUTURE</span>
-                    </div>
-                </div>
-                
-                <!-- Navigation Links - Desktop -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Home</a>
-                    <a href="#home" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">About Us</a>
-                    <a href="#services" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Our Services</a>
-                    <a href="#platform" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Carbontalk.id</a>
-                    <a href="#why-us" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Why Us</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary-dark font-semibold text-sm">Contact</a>
-                    
-                    <!-- CTA Button dengan Gradient -->
-                    <a href="#contact" class="gradient-btn text-white px-6 py-3 rounded-lg font-semibold text-sm flex items-center space-x-2">
-                        <span>Get in Touch</span>
+@section('title', 'Home - PT. Quana Raya Shakatama')
+
+@section('content')
+
+    <!-- ====== HERO SECTION ====== -->
+    <section id="home" class="relative w-full h-[450px] lg:h-[500px] flex items-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2070&auto=format&fit=crop"
+                alt="Industrial Sustainability" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent"></div>
+        </div>
+
+        <div class="max-w-[1600px] mx-auto px-4 lg:px-8 w-full relative z-10">
+            <div class="lg:w-3/5">
+                <h1 class="text-3xl lg:text-[44px] font-extrabold text-primary-dark mb-4 leading-[1.1] tracking-tight">
+                    Engineering Sustainable Future<br>
+                    <span class="text-gray-900">Through Data, Innovation,<br>and Carbon Intelligence.</span>
+                </h1>
+
+                <p class="text-sm lg:text-[15px] text-gray-800 font-medium mb-8 leading-relaxed max-w-xl">
+                    PT. Quana Raya Shakatama helps industries<br>
+                    accelerate sustainability through engineering services,<br>
+                    carbon accounting, monitoring systems,<br>
+                    and professional capacity building.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#services"
+                        class="bg-primary-dark text-white px-6 py-3 rounded text-sm font-bold flex items-center justify-center space-x-2 hover:bg-[#0a3a2a] transition w-fit">
+                        <span>EXPLORE OUR SERVICES</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#contact"
+                        class="bg-white border border-gray-300 text-gray-900 px-6 py-3 rounded text-sm font-bold flex items-center justify-center space-x-2 hover:border-primary-dark hover:text-primary-dark transition w-fit">
+                        <span>CONTACT US</span>
                         <i class="fas fa-arrow-right text-xs"></i>
                     </a>
                 </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="lg:hidden text-primary-dark focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-16 lg:pt-28 lg:pb-20 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                
-                <!-- Left Content -->
-                <div class="lg:w-5/12 reveal-left">
-                    <!-- Main Heading -->
-                    <h1 class="text-2xl lg:text-4xl font-black text-primary-dark mb-5 leading-[1.15] tracking-tight">
-                        DRIVING SUSTAINABLE<br>
-                        GROWTH FOR<br>
-                        A BETTER FUTURE
-                    </h1>
-                    
-                    <!-- Yellow Accent Line -->
-                    <div class="w-16 h-1 bg-[#d4a84c] mb-6 reveal reveal-delay-1"></div>
-                    
-                    <!-- Description -->
-                    <p class="text-base lg:text-lg text-gray-600 mb-8 leading-relaxed font-normal reveal reveal-delay-2">
-                        PT. Quana Raya Shakatama is a consulting and engineering company that delivers integrated solutions to help industries operate safely, efficiently, and sustainably.
-                    </p>
-                    
-                    <!-- CTA Buttons dengan Gradient -->
-                    <div class="flex flex-col sm:flex-row gap-3 reveal reveal-delay-3">
-                        <a href="#services" class="gradient-btn text-white px-7 py-3.5 rounded-lg font-semibold text-sm flex items-center justify-center space-x-2">
-                            <span>Our Services</span>
-                            <i class="fas fa-arrow-right text-xs"></i>
-                        </a>
-                        <a href="#about" class="btn-secondary border-2 border-[#064e3b] text-[#064e3b] px-7 py-3.5 rounded-lg font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#064e3b] hover:text-white">
-                            <i class="fas fa-play-circle text-base"></i>
-                            <span>About Us</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Right Content - Image -->
-                <div class="lg:w-7/12 relative reveal-right">
-                    <div class="relative z-10">
-                        <img src="{{ asset('images/sustainability-bg.jpg') }}" 
-                             alt="Sustainable Energy" 
-                             class="w-full h-auto [mask-image:linear-gradient(to_right,transparent,black_30%)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_30%)]">
-                        
-                        <!-- Gradient Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-transparent opacity-10 rounded-2xl pointer-events-none"></div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- OUR SERVICES Section -->
-    <section id="services" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="text-center mb-14 reveal">
-                <h2 class="text-4xl lg:text-5xl font-black text-primary-dark mb-4 tracking-tight">OUR SERVICES</h2>
-                <div class="w-16 h-1 bg-accent-yellow mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-3xl mx-auto text-base lg:text-lg leading-relaxed">
-                    We provide a wide range of consulting, engineering, inspection, training,<br> and construction services to support your business performance and compliance.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                
-                <!-- Service 1 -->
-                <div class="service-card bg-white p-7 rounded-xl reveal reveal-delay-1">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div class="service-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-leaf text-white text-2xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            Carbon Solutions<br>via carbontalk.id
-                        </h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                        Carbon accounting, analysis, training, engineering of CO₂e measurement and construction.
-                    </p>
-                    <a href="#" class="learn-more-link inline-flex items-center text-primary-dark font-semibold text-sm">
-                        Learn More <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                </div>
+    <!-- ====== OUR EXPERTISE & OUR PLATFORMS (50:50 SIDE BY SIDE) ====== -->
+    <section id="services" class="w-full py-14 bg-white border-b border-gray-100">
+        <div class="max-w-[1600px] mx-auto px-4 lg:px-8">
 
-                <!-- Service 2 -->
-                <div class="service-card bg-white p-7 rounded-xl reveal reveal-delay-2">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div class="service-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-user-friends text-white text-2xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            Management System<br>Consulting & Training
-                        </h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                        ISO implementation, audits, and training to build robust and effective management systems.
-                    </p>
-                    <a href="#" class="learn-more-link inline-flex items-center text-primary-dark font-semibold text-sm">
-                        Learn More <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                </div>
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-0">
 
-                <!-- Service 3 -->
-                <div class="service-card bg-white p-7 rounded-xl reveal reveal-delay-3">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div class="service-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-search text-white text-2xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            Inspection &<br>Technical Testing
-                        </h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                        Inspection and technical testing of equipment to ensure safety, reliability, and regulatory compliance.
-                    </p>
-                    <a href="#" class="learn-more-link inline-flex items-center text-primary-dark font-semibold text-sm">
-                        Learn More <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="service-card bg-white p-7 rounded-xl reveal reveal-delay-4">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div class="service-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-hard-hat text-white text-2xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            NDT Training
-                        </h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                        Certified Non-Destructive Testing training programs to develop competent and qualified personnel.
-                    </p>
-                    <a href="#" class="learn-more-link inline-flex items-center text-primary-dark font-semibold text-sm">
-                        Learn More <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="service-card bg-white p-7 rounded-xl reveal reveal-delay-5">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div class="service-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-shopping-cart text-white text-2xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            General Trading
-                        </h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                        Providing industrial equipment, materials, and supporting products for your operational needs.
-                    </p>
-                    <a href="#" class="learn-more-link inline-flex items-center text-primary-dark font-semibold text-sm">
-                        Learn More <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="service-card bg-white p-7 rounded-xl reveal reveal-delay-6">
-                    <div class="flex items-start space-x-4 mb-4">
-                        <div class="service-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-building text-white text-2xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 leading-tight pt-2">
-                            General Contractor
-                        </h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-5">
-                        Engineering, procurement, construction, and commissioning services with a commitment to quality and safety.
-                    </p>
-                    <a href="#" class="learn-more-link inline-flex items-center text-primary-dark font-semibold text-sm">
-                        Learn More <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- OUR PLATFORM Section -->
-    <section id="platform" class="py-20 bg-slate-100">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-                
-                <div class="lg:w-1/2 reveal-left">
-                    <span class="text-sm font-bold text-primary-dark tracking-widest uppercase mb-4 block">OUR PLATFORM</span>
-                    
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="relative w-14 h-14 flex items-center justify-center">
-                            <div class="gradient-icon-circle absolute inset-0 rounded-full"></div>
-                            <i class="fas fa-leaf text-accent-gold text-2xl relative z-10"></i>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-black text-primary-dark tracking-tight">carbontalk.id</div>
-                            <div class="text-xs font-semibold text-gray-500 tracking-widest uppercase">Measure. Analyze. Decarbonize.</div>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-700 text-base leading-relaxed mb-8">
-                        Carbontalk.id is our dedicated platform for carbon solutions. We help organizations measure, analyze, and reduce their carbon footprint through data-driven strategies, innovative engineering, and capacity building.
-                    </p>
-                    
-                    <a href="https://carbontalk.id" target="_blank" class="gradient-btn inline-flex items-center text-white px-8 py-4 rounded-lg font-semibold space-x-2">
-                        <span>Explore carbontalk.id</span>
-                        <i class="fas fa-arrow-right text-sm"></i>
-                    </a>
-                </div>
-                
-                <div class="lg:w-1/2 reveal-right">
-                    <div class="flex flex-col lg:flex-row items-center gap-8">
-                        
-                        <div class="flex flex-col space-y-5 lg:w-2/5">
-                            <!-- Feature 1 -->
-                            <div class="feature-item flex items-center space-x-4 reveal reveal-delay-1">
-                                <div class="feature-icon-box w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-cloud text-primary-dark text-2xl"></i>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-gray-900 text-sm">Carbon</div>
-                                    <div class="font-bold text-gray-900 text-sm">Accounting</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Feature 2 -->
-                            <div class="feature-item flex items-center space-x-4 reveal reveal-delay-2">
-                                <div class="feature-icon-box w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-chart-bar text-primary-dark text-2xl"></i>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-gray-900 text-sm">Emissions</div>
-                                    <div class="font-bold text-gray-900 text-sm">Analysis</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Feature 3 -->
-                            <div class="feature-item flex items-center space-x-4 reveal reveal-delay-3">
-                                <div class="feature-icon-box w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-tachometer-alt text-primary-dark text-2xl"></i>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-gray-900 text-sm">CO₂e Measurement</div>
-                                    <div class="font-bold text-gray-900 text-sm">Engineering</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Feature 4 -->
-                            <div class="feature-item flex items-center space-x-4 reveal reveal-delay-4">
-                                <div class="feature-icon-box w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-graduation-cap text-primary-dark text-2xl"></i>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-gray-900 text-sm">Training & Capacity</div>
-                                    <div class="font-bold text-gray-900 text-sm">Building</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Device Mockup -->
-                        <div class="lg:w-3/5 relative reveal-scale reveal-delay-2">
-                            <div class="relative">
-                                <div class="bg-gray-800 rounded-t-xl p-2 pb-0 shadow-2xl">
-                                    <div class="bg-white rounded-t-lg overflow-hidden">
-                                        </div>
-                                        <div class="p-4 bg-gray-50 min-h-[200px]">
-                                            <div class="text-xs font-bold text-gray-700 mb-3">Dashboard</div>
-                                            <div class="grid grid-cols-3 gap-2 mb-3">
-                                                <div class="bg-white p-2 rounded shadow-sm">
-                                                    <div class="text-[10px] text-gray-500">Emissions</div>
-                                                    <div class="text-lg font-black text-primary-dark">12,450</div>
-                                                </div>
-                                                <div class="bg-white p-2 rounded shadow-sm">
-                                                    <div class="text-[10px] text-gray-500">Reduction</div>
-                                                    <div class="text-lg font-black text-green-600">-23%</div>
-                                                </div>
-                                                <div class="bg-white p-2 rounded shadow-sm">
-                                                    <div class="text-[10px] text-gray-500">Projects</div>
-                                                    <div class="text-lg font-black text-primary-dark">48</div>
-                                                </div>
-                                            </div>
-                                            <div class="bg-white p-3 rounded shadow-sm">
-                                                <div class="flex items-end space-x-1 h-16">
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 40%"></div>
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 65%"></div>
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 45%"></div>
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 80%"></div>
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 55%"></div>
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 90%"></div>
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 70%"></div>
-                                                    <div class="bg-primary-dark w-4 rounded-t" style="height: 95%"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-700 h-3 rounded-b-lg mx-4"></div>
-                                <div class="bg-gray-600 h-1.5 rounded-b-lg mx-8"></div>
-                            </div>
-                            
-                            <div class="absolute -right-4 bottom-4 w-24 shadow-2xl">
-                                <div class="bg-gray-800 rounded-2xl p-1.5">
-                                    <div class="bg-white rounded-xl overflow-hidden">
-                                        <div class="bg-gray-100 px-2 py-1 text-center">
-                                            <div class="w-8 h-1 bg-gray-400 rounded-full mx-auto"></div>
-                                        </div>
-                                        <div class="p-2">
-                                            <div class="text-[8px] font-bold text-gray-700 mb-1">Dashboard</div>
-                                            <div class="bg-gray-50 p-1.5 rounded mb-1">
-                                                <div class="text-[7px] text-gray-500">Emissions</div>
-                                                <div class="text-sm font-black text-primary-dark">5,430</div>
-                                            </div>
-                                            <div class="bg-gray-50 p-1.5 rounded">
-                                                <div class="flex items-end space-x-0.5 h-8">
-                                                    <div class="bg-primary-dark w-1.5 rounded-t" style="height: 30%"></div>
-                                                    <div class="bg-primary-dark w-1.5 rounded-t" style="height: 50%"></div>
-                                                    <div class="bg-primary-dark w-1.5 rounded-t" style="height: 40%"></div>
-                                                    <div class="bg-primary-dark w-1.5 rounded-t" style="height: 70%"></div>
-                                                    <div class="bg-primary-dark w-1.5 rounded-t" style="height: 60%"></div>
-                                                    <div class="bg-primary-dark w-1.5 rounded-t" style="height: 85%"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Proposition Section dengan Pattern Background -->
-    <section class="py-10 bg-primary-dark pattern-bg">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-                
-                <div class="value-item flex items-center space-x-4 reveal reveal-delay-1">
-                    <div class="value-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-globe text-accent-gold text-2xl relative z-10"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-sm leading-tight">Helping Industries</div>
-                        <div class="text-white font-bold text-sm leading-tight">Build a Sustainable</div>
-                        <div class="text-white font-bold text-sm leading-tight">Future</div>
-                    </div>
-                </div>
-                
-                <div class="value-item flex items-center space-x-4 reveal reveal-delay-2">
-                    <div class="value-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-leaf text-accent-gold text-2xl relative z-10"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-sm leading-tight">Integrated Solutions</div>
-                        <div class="text-white font-bold text-sm leading-tight">for Safety, Efficiency</div>
-                        <div class="text-white font-bold text-sm leading-tight">& Sustainability</div>
-                    </div>
-                </div>
-                
-                <div class="value-item flex items-center space-x-4 reveal reveal-delay-3">
-                    <div class="value-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-user text-accent-gold text-2xl relative z-10"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-sm leading-tight">Experienced Team</div>
-                        <div class="text-white font-bold text-sm leading-tight">with Multi-Industry</div>
-                        <div class="text-white font-bold text-sm leading-tight">Expertise</div>
-                    </div>
-                </div>
-                
-                <div class="value-item flex items-center space-x-4 reveal reveal-delay-4">
-                    <div class="value-icon-circle w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-handshake-angle text-accent-gold text-2xl relative z-10"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-sm leading-tight">Committed to Quality,</div>
-                        <div class="text-white font-bold text-sm leading-tight">Integrity & Long-Term</div>
-                        <div class="text-white font-bold text-sm leading-tight">Partnership</div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY CHOOSE US Section -->
-    <section id="why-us" class="py-12 bg-white">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-                
-                <div class="lg:w-1/2 reveal-left">
-                    <div class="relative">
-                        <img src="{{ asset('images/why-choose-us.jpg') }}" 
-                             alt="Sustainable Globe" 
-                             class="rounded-2xl shadow-xl w-full h-auto"
-                             onerror="this.src='https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80'">
-                    </div>
-                </div>
-                
-                <div class="lg:w-1/2 reveal-right">
-                    <span class="text-sm font-bold text-accent-gold tracking-widest uppercase mb-3 block">WHY CHOOSE US</span>
-                    
-                    <h2 class="text-3xl lg:text-4xl font-black text-gray-900 mb-4 leading-tight">
-                        Your Trusted Partner for Sustainable Performance
-                    </h2>
-                    
-                    <p class="text-gray-600 text-base leading-relaxed mb-6">
-                        We combine expertise, innovation, and integrity to deliver solutions that create real impact for your business and the environment.
-                    </p>
-                    
-                    <div class="space-y-3">
-                        <div class="checkmark-item flex items-center space-x-4 reveal reveal-delay-1">
-                            <div class="checkmark-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-check text-white text-sm relative z-10"></i>
-                            </div>
-                            <span class="text-gray-800 font-semibold">Holistic and Integrated Services</span>
-                        </div>
-                        
-                        <div class="checkmark-item flex items-center space-x-4 reveal reveal-delay-2">
-                            <div class="checkmark-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-check text-white text-sm relative z-10"></i>
-                            </div>
-                            <span class="text-gray-800 font-semibold">Practical Solutions with Measurable Impact</span>
-                        </div>
-                        
-                        <div class="checkmark-item flex items-center space-x-4 reveal reveal-delay-3">
-                            <div class="checkmark-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-check text-white text-sm relative z-10"></i>
-                            </div>
-                            <span class="text-gray-800 font-semibold">Experienced Professionals</span>
-                        </div>
-                        
-                        <div class="checkmark-item flex items-center space-x-4 reveal reveal-delay-4">
-                            <div class="checkmark-icon w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-check text-white text-sm relative z-10"></i>
-                            </div>
-                            <span class="text-gray-800 font-semibold">Commitment to Sustainability</span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- HAPPY TO HELP YOUR BUSINESS (Contact CTA) Section -->
-    <section id="contact" class="py-8 bg-gray-100">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10">
-                
-                <!-- Left: Icon + Text -->
-                <div class="flex items-center space-x-5 lg:w-2/5 reveal-left">
-                    <div class="contact-icon-circle w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
-                        <i class="fas fa-handshake text-white text-4xl relative z-10"></i>
-                    </div>
-                    
-                    <div>
-                        <h2 class="font-serif text-2xl lg:text-3xl font-bold text-gray-900 italic mb-2 leading-tight">
-                            Happy to Help Your Business
+                <!-- ========== KIRI: OUR EXPERTISE (50%) ========== -->
+                <div class="lg:w-1/2 lg:pr-10">
+                    <div class="text-center mb-10">
+                        <span class="text-[15px] font-bold text-accent-lightgreen tracking-widest uppercase">OUR
+                            EXPERTISE</span>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Integrated Solutions for a Low Carbon Future
                         </h2>
-                        <p class="text-gray-600 text-sm leading-relaxed max-w-md">
-                            We are ready to support your business with the right solutions. Feel free to contact us anytime. We look forward to working with you!
-                        </p>
+                    </div>
+
+                    <!-- Grid 2x2 -->
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-8">
+                        <!-- Item 1: ENGINEERING -->
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 mb-3 flex items-center justify-center">
+                                <i class="fa-solid fa-gear text-4xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-gray-900 mb-2 uppercase tracking-wide">ENGINEERING</h3>
+                            <p class="text-[14px] text-gray-600 leading-relaxed">Design and implementation of measurement,
+                                monitoring, and energy systems.</p>
+                        </div>
+
+                        <!-- Item 2: CARBON ACCOUNTING -->
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 mb-3 flex items-center justify-center">
+                                <i class="fa-solid fa-cloud text-4xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-gray-900 mb-2 uppercase tracking-wide">CARBON ACCOUNTING</h3>
+                            <p class="text-[14px] text-gray-600 leading-relaxed">Corporate & product carbon footprint, LCA,
+                                and GHG reporting.</p>
+                        </div>
+
+                        <!-- Item 3: TRAINING -->
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 mb-3 flex items-center justify-center">
+                                <i class="fa-solid fa-graduation-cap text-4xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-gray-900 mb-2 uppercase tracking-wide">TRAINING & CAPACITY
+                                BUILDING</h3>
+                            <p class="text-[14px] text-gray-600 leading-relaxed">Awareness, professional training, and
+                                certification for organizations and individuals.</p>
+                        </div>
+
+                        <!-- Item 4: DIGITAL SOLUTION -->
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-14 h-14 mb-3 flex items-center justify-center">
+                                <i class="fa-solid fa-chart-line text-4xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xs font-bold text-gray-900 mb-2 uppercase tracking-wide">DIGITAL SOLUTION</h3>
+                            <p class="text-[14px] text-gray-600 leading-relaxed">Data-driven tools and digital platforms for
+                                carbon management.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Middle: Contact Info -->
-                <div class="flex flex-col space-y-3 lg:w-1/4 reveal">
-                    <div class="contact-method flex items-center space-x-3">
-                        <i class="fas fa-envelope contact-icon text-primary-dark text-xl"></i>
-                        <a href="mailto:office@qrstama.com" class="text-gray-800 font-semibold text-base hover:text-primary-dark transition">
-                            office@qrstama.com
-                        </a>
+
+                <!-- ========== GARIS PEMBATAS VERTIKAL ========== -->
+                <div class="hidden lg:block w-px bg-gray-200 mx-0"></div>
+
+                <!-- ========== KANAN: OUR PLATFORMS (50%) ========== -->
+                <div id="platform" class="lg:w-1/2 lg:pl-10 mt-10 lg:mt-0">
+                    <div class="text-center mb-10">
+                        <span class="text-[15px] font-bold text-accent-lightgreen tracking-widest uppercase">OUR
+                            PLATFORMS</span>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mt-2">Knowledge. Learning. Impact.</h2>
                     </div>
-                    
-                    <div class="contact-method flex items-center space-x-3">
-                        <i class="fab fa-whatsapp contact-icon text-primary-dark text-2xl"></i>
-                        <a href="https://wa.me/6281119051196" target="_blank" class="text-gray-800 font-semibold text-base hover:text-primary-dark transition">
-                            081119051196
-                        </a>
+
+                    <div class="flex flex-col gap-5">
+                        <!-- Card 1: Carbontalk.id -->
+                        <div class="bg-[#f2f7f5] rounded-xl overflow-hidden">
+                            <div class="flex flex-col sm:flex-row">
+                                <!-- Text (Kiri) -->
+                                <div class="p-6 sm:w-[60%] flex flex-col justify-center">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <!-- SVG Logo Carbontalk.id -->
+                                        <div class="w-24 h-18 flex-shrink-0">
+                                            <img src="{{ asset('images/carbon-talk-id-vertical.svg') }}"
+                                                alt="Carbontalk.id Logo" class="w-full h-full object-contain">
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-700 leading-relaxed mb-4">Your go-to source for insights,
+                                        news, and practical knowledge on carbon management and sustainability.</p>
+                                    <a href="#"
+                                        class="bg-primary-dark text-white px-4 py-2 rounded text-[10px] font-bold inline-flex items-center space-x-2 hover:bg-[#0a3a2a] transition w-fit">
+                                        <span>VISIT CARBONTALK.ID</span>
+                                        <i class="fas fa-arrow-right text-[8px]"></i>
+                                    </a>
+                                </div>
+                                <!-- Image (Kanan) -->
+                                <div class="sm:w-[40%] relative min-h-[160px]">
+                                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop"
+                                        alt="Carbontalk" class="absolute inset-0 w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Carbontalk Academy -->
+                        <div class="bg-[#f2f7f5] rounded-xl overflow-hidden">
+                            <div class="flex flex-col sm:flex-row">
+                                <!-- Text (Kiri) -->
+                                <div class="p-6 sm:w-[60%] flex flex-col justify-center">
+                                    <div class="flex items-center space-x-3 mb-3">
+                                        <!-- SVG Logo Carbontalk Academy -->
+                                        <div class="w-20 h-18 flex-shrink-0">
+                                            <img src="{{ asset('images/carbon-talk-academy-vertical.svg') }}"
+                                                alt="Carbontalk Academy Logo" class="w-full h-full object-contain">
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-gray-700 leading-relaxed mb-4">Professional training and
+                                        certification programs to build capacity and drive real sustainability impact.</p>
+                                    <a href="#"
+                                        class="bg-primary-dark text-white px-4 py-2 rounded text-[10px] font-bold inline-flex items-center space-x-2 hover:bg-[#0a3a2a] transition w-fit">
+                                        <span>EXPLORE ACADEMY</span>
+                                        <i class="fas fa-arrow-right text-[8px]"></i>
+                                    </a>
+                                </div>
+                                <!-- Image (Kanan) -->
+                                <div class="sm:w-[40%] relative min-h-[160px]">
+                                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop"
+                                        alt="Academy" class="absolute inset-0 w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Right: CTA Button dengan Gradient -->
-                <div class="lg:w-auto flex justify-center lg:justify-end reveal-right">
-                    <a href="mailto:office@qrstama.com" class="gradient-btn inline-flex items-center text-white px-8 py-4 rounded-lg font-semibold space-x-2 shadow-lg">
-                        <span>Contact Us</span>
-                        <i class="fas fa-arrow-right text-sm"></i>
-                    </a>
-                </div>
-                
+
             </div>
         </div>
     </section>
 
-    <!-- FOOTER dengan Dots Pattern -->
-    <footer class="bg-primary-dark text-white pt-10 pb-6 dots-pattern">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 mb-8">
-                
-                <!-- Column 1: Company Info -->
-                <div class="reveal reveal-delay-1">
-                    <div class="flex items-center space-x-4 mb-5">
-                        <div class="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
-                            <div class="logo-gradient absolute inset-0 transform rotate-45 rounded-lg opacity-90"></div>
-                            <div class="relative z-10 text-white font-bold text-2xl">Q</div>
+    <!-- ====== WHY CHOOSE QRST & INDUSTRIES ====== -->
+    <section class="w-full py-8 bg-white border-b border-gray-200 shadow-sm z-20 relative">
+        <div class="max-w-[1600px] mx-auto px-4 lg:px-8">
+            <div class="flex flex-col xl:flex-row justify-between items-center gap-6">
+
+                <!-- Bagian Kiri: Why Choose -->
+                <div class="flex flex-col lg:flex-row items-center gap-6 xl:w-[65%] w-full">
+                    <!-- Title -->
+                    <div class="min-w-[180px] lg:border-r border-gray-200 pr-4">
+                        <span class="text-[12px] font-bold text-accent-lightgreen tracking-widest uppercase block mb-1">WHY
+                            CHOOSE QRST</span>
+                        <h2 class="text-xl font-extrabold text-gray-900 leading-tight">Your Trusted Partner<br>in
+                            Sustainability</h2>
+                    </div>
+
+                    <!-- 4 Features -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-regular fa-circle-check text-accent-lightgreen text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-900 mb-1 leading-tight">Practical
+                                    Engineering<br>Experience</h4>
+                                <p class="text-[11px] text-gray-500 leading-tight">Years of hands-on experience across
+                                    various industries.</p>
+                            </div>
                         </div>
-                        <div>
-                            <div class="text-lg font-bold leading-tight tracking-tight">PT. QUANA RAYA</div>
-                            <div class="text-lg font-bold leading-tight tracking-tight">SHAKATAMA</div>
-                            <div class="text-[9px] font-semibold text-gray-300 tracking-wider mt-1">INTEGRATED SOLUTIONS</div>
-                            <div class="text-[9px] font-semibold text-gray-300 tracking-wider">FOR A SUSTAINABLE FUTURE</div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-regular fa-circle-check text-accent-lightgreen text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-900 mb-1 leading-tight">
+                                    Industry-Oriented<br>Solutions</h4>
+                                <p class="text-[11px] text-gray-500 leading-tight">Solutions tailored to your operational
+                                    context.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-regular fa-circle-check text-accent-lightgreen text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-900 mb-1 leading-tight">Sustainability
+                                    Focus<br>&nbsp;</h4>
+                                <p class="text-[11px] text-gray-500 leading-tight">Committed to measurable environmental
+                                    and social impact.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-regular fa-circle-check text-accent-lightgreen text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-900 mb-1 leading-tight">Data Driven<br>&nbsp;</h4>
+                                <p class="text-[11px] text-gray-500 leading-tight">Decisions based on accurate data,
+                                    advanced tools, and standards.</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <p class="text-gray-300 text-sm leading-relaxed">
-                        Delivering integrated consulting, engineering, inspection, training, and construction solutions for a safer, smarter, and more sustainable future.
-                    </p>
                 </div>
-                
-                <!-- Column 2: Quick Links -->
-                <div class="reveal reveal-delay-2">
-                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2.5">
-                        <li><a href="#home" class="footer-link text-gray-300 text-sm inline-block">Home</a></li>
-                        <li><a href="#home" class="footer-link text-gray-300 text-sm inline-block">About Us</a></li>
-                        <li><a href="#services" class="footer-link text-gray-300 text-sm inline-block">Our Services</a></li>
-                        <li><a href="#platform" class="footer-link text-gray-300 text-sm inline-block">Carbontalk.id</a></li>
-                        <li><a href="#why-us" class="footer-link text-gray-300 text-sm inline-block">Why Us</a></li>
-                        <li><a href="#contact" class="footer-link text-gray-300 text-sm inline-block">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 3: Our Platform -->
-                <div class="reveal reveal-delay-3">
-                    <h4 class="text-lg font-bold mb-4">Our Platform</h4>
-                    
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="relative w-14 h-14 flex items-center justify-center">
-                            <div class="gradient-icon-circle absolute inset-0 rounded-full"></div>
-                            <i class="fas fa-leaf text-accent-gold text-2xl relative z-10"></i>
+
+                <!-- Bagian Kanan: Industries -->
+                <div
+                    class="flex flex-col items-center xl:items-start xl:w-[35%] w-full xl:pl-6 xl:border-l border-gray-200">
+                    <span
+                        class="text-[13px] font-bold text-accent-lightgreen tracking-widest uppercase block mb-6 w-full text-center">INDUSTRIES
+                        WE SUPPORT</span>
+                    <div class="flex justify-between items-center w-full px-2 lg:px-0">
+                        <div class="flex flex-col items-center group">
+                            <i
+                                class="fa-solid fa-droplet text-2xl text-gray-600 mb-2 group-hover:text-primary transition"></i>
+                            <span class="text-[9px] font-bold text-gray-700 text-center leading-tight">Oil & Gas</span>
                         </div>
-                        <div>
-                            <div class="text-2xl font-black tracking-tight">carbontalk.id</div>
-                            <div class="text-[9px] font-semibold text-gray-300 tracking-widest uppercase">Measure. Analyze. Decarbonize.</div>
+
+                        <div class="h-10 w-px bg-gray-300"></div>
+
+                        <div class="flex flex-col items-center group">
+                            <i
+                                class="fa-solid fa-industry text-2xl text-gray-600 mb-2 group-hover:text-primary transition"></i>
+                            <span class="text-[9px] font-bold text-gray-700 text-center leading-tight">Manufacturing</span>
                         </div>
-                    </div>
-                    
-                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
-                        The business platform that help organizations measure, analyze, and reduce their carbon footprint.
-                    </p>
-                    
-                    <a href="#platform" class="inline-flex items-center text-white font-semibold text-sm hover:text-accent-gold transition group">
-                        <span>Visit Website</span>
-                        <i class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
-                
-            </div>
-            
-            <!-- Divider -->
-            <div class="border-t border-white border-opacity-20 pt-6 reveal">
-                <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
-                    
-                    <!-- Copyright -->
-                    <div class="text-gray-400 text-sm text-center lg:text-left">
-                        <p>&copy; 2025 PT. Quana Raya Shakatama. All rights reserved.</p>
-                    </div>
-                    
-                    <!-- Social Media -->
-                    <div class="flex items-center space-x-6">
-                        <div class="flex items-center space-x-2 text-gray-300 text-sm">
-                            <span class="font-semibold">LinkedIn:</span>
-                            <a href="#" class="social-icon hover:text-accent-gold font-semibold">QRSTC</a>
-                            <i class="fab fa-linkedin text-lg"></i>
+
+                        <div class="h-10 w-px bg-gray-300"></div>
+
+                        <div class="flex flex-col items-center group">
+                            <i
+                                class="fa-solid fa-truck-fast text-2xl text-gray-600 mb-2 group-hover:text-primary transition"></i>
+                            <span class="text-[9px] font-bold text-gray-700 text-center leading-tight">Mining</span>
                         </div>
-                        <div class="flex items-center space-x-2 text-gray-300 text-sm">
-                            <span class="font-semibold">Instagram:</span>
-                            <a href="#" class="social-icon hover:text-accent-gold font-semibold">@carbontalk</a>
-                            <i class="fab fa-instagram text-lg"></i>
+
+                        <div class="h-10 w-px bg-gray-300"></div>
+
+                        <div class="flex flex-col items-center group">
+                            <i
+                                class="fa-solid fa-bolt text-2xl text-gray-600 mb-2 group-hover:text-primary transition"></i>
+                            <span class="text-[9px] font-bold text-gray-700 text-center leading-tight">Power Plant</span>
+                        </div>
+
+                        <div class="h-10 w-px bg-gray-300"></div>
+
+                        <div class="flex flex-col items-center group">
+                            <i
+                                class="fa-solid fa-leaf text-2xl text-gray-600 mb-2 group-hover:text-primary transition"></i>
+                            <span class="text-[9px] font-bold text-gray-700 text-center leading-tight">Food Industry</span>
+                        </div>
+
+                        <div class="h-10 w-px bg-gray-300"></div>
+
+                        <div class="flex flex-col items-center group">
+                            <i
+                                class="fa-solid fa-building-columns text-2xl text-gray-600 mb-2 group-hover:text-primary transition"></i>
+                            <span class="text-[9px] font-bold text-gray-700 text-center leading-tight">Government</span>
+                        </div>
+
+                        <div class="h-10 w-px bg-gray-300"></div>
+
+                        <div class="flex flex-col items-center group">
+                            <i
+                                class="fa-solid fa-graduation-cap text-2xl text-gray-600 mb-2 group-hover:text-primary transition"></i>
+                            <span class="text-[9px] font-bold text-gray-700 text-center leading-tight">Education</span>
                         </div>
                     </div>
-                    
                 </div>
+
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- ============================================
-         SCROLL REVEAL JAVASCRIPT
-         ============================================ -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-            
-            const observerCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } else {
-                        entry.target.classList.remove('active');
-                    }
-                });
-            };
-            
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
-            
-            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-            revealElements.forEach(el => observer.observe(el));
-        });
-    </script>
-
-</body>
-</html>
+@endsection
