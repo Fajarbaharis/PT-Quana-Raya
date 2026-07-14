@@ -20,11 +20,8 @@ $app = Application::configure(basePath: dirname(__DIR__))
         );
     })->create();
 
-if (isset($_ENV['VERCEL_ACTION'])) {
-    $app->useStoragePath('/tmp/storage');
-}
-// Untuk Vercel - gunakan /tmp/storage
-if (isset($_ENV['VERCEL']) || getenv('VERCEL')) {
+// Redirect storage path to /tmp for Vercel's read-only filesystem
+if (getenv('VERCEL')) {
     $app->useStoragePath('/tmp/storage');
 }
 
