@@ -1,6 +1,6 @@
 <?php
 
-// Buat direktori caching di /tmp untuk Vercel
+// Ensure caching directories exist in Vercel's /tmp directory
 $directories = [
     '/tmp/storage/framework/views',
     '/tmp/storage/framework/cache/data',
@@ -15,5 +15,19 @@ foreach ($directories as $directory) {
     }
 }
 
-// Arahkan ke public/index.php Laravel
-require __DIR__ . '/../public/index.php';
+// Copy bootstrap/cache files to /tmp/bootstrap/cache if they exist in the original directory
+$sourceCachePath = __DIR__.'/../bootstrap/cache';
+$targetCachePath = '/tmp/bootstrap/cache';
+
+if (is_dir($sourceCachePath)) {
+    $files = scandir($sourceCachePath);
+    foreach ($files as $file) {
+        if ($file !== '.' && $file !== '..' && is_file($sourceCachePath.'/'.$file)) {
+            if (!file_exists($targetCachePath.'/'.$file)) {
+                copy($sourceCachePath.'/'.$file, $targetCachePath.'/'.$file);
+            }
+        }
+    }
+}
+
+require __DIR__.'/../public/index.php';
