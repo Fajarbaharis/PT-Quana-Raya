@@ -7,28 +7,8 @@
     <!-- Title dinamis -->
     <title>@yield('title', 'PT. Quana Raya Shakatama - Integrated Solutions')</title>
     
-    <!-- 1. CSS AOS (Boleh di head) -->
+    <!-- CSS AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- CSS & FontAwesome -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Konfigurasi Warna Custom Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-dark': '#064e3b',
-                        'primary': '#047857',
-                        'accent-lightgreen': '#a7f3d0',
-                        'accent-gold': '#fbbf24',
-                    }
-                }
-            }
-        }
-    </script>
 
     @include('partials.head')
 </head>

@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- ====== HERO SECTION: CARBONTALK.ID ====== -->
-    <section class="relative w-full h-[400px] lg:h-[480px] flex items-center overflow-hidden">
+    <section class="relative w-full min-h-[460px] lg:min-h-[520px] py-14 lg:py-20 flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2070&auto=format&fit=crop"
                 alt="Carbontalk.id Background" class="w-full h-full object-cover object-center">
@@ -51,52 +51,61 @@
         </div>
     </section>
 
-    <!-- ====== 4 VALUE PROPS BAR ====== -->
-    <section class="w-full bg-primary-dark">
-        <div class="max-w-[1600px] mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 lg:divide-x divide-white/10">
-                <div class="flex items-start space-x-4 p-6 lg:p-8" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-shield-halved text-white text-lg"></i>
+    <!-- ====== 4 VALUE PROPS (FLOATING LUXURY CARDS) ====== -->
+    <div class="relative z-20 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-12 lg:-mt-16">
+        <div class="relative rounded-2xl lg:rounded-3xl bg-gradient-to-br from-[#063a2a] via-[#094835] to-[#04281c] p-4 sm:p-5 lg:p-6 shadow-[0_20px_50px_rgba(6,78,59,0.3)] border border-emerald-500/20 backdrop-blur-xl overflow-hidden" data-aos="fade-up" data-aos-duration="900">
+            <!-- Ambient Background Glow Highlights -->
+            <div class="absolute -top-24 -left-24 w-72 h-72 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-[#d4a84c]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 relative z-10">
+                
+                <!-- 1. Trusted Information -->
+                <div class="group relative p-5 lg:p-6 rounded-xl lg:rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] hover:border-emerald-400/30 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center flex-shrink-0 mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.3)] transition-all duration-300">
+                        <i class="fa-solid fa-shield-halved text-emerald-300 text-lg"></i>
                     </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white mb-1">Trusted Information</h4>
-                        <p class="text-xs text-gray-300 leading-relaxed">Credible, up-to-date, and science-based content.</p>
-                    </div>
+                    <h4 class="text-sm lg:text-base font-bold text-white mb-1.5 tracking-tight group-hover:text-emerald-200 transition-colors">Trusted Information</h4>
+                    <p class="text-xs text-emerald-100/75 leading-relaxed font-normal">Credible, up-to-date, and science-based content.</p>
+                    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/0 to-transparent group-hover:via-emerald-400/50 transition-all duration-500 rounded-b-xl"></div>
                 </div>
-                <div class="flex items-start space-x-4 p-6 lg:p-8" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-leaf text-white text-lg"></i>
+
+                <!-- 2. Practical & Actionable -->
+                <div class="group relative p-5 lg:p-6 rounded-xl lg:rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] hover:border-emerald-400/30 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center flex-shrink-0 mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.3)] transition-all duration-300">
+                        <i class="fa-solid fa-leaf text-emerald-300 text-lg"></i>
                     </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white mb-1">Practical & Actionable</h4>
-                        <p class="text-xs text-gray-300 leading-relaxed">Insights you can apply to drive real change.</p>
-                    </div>
+                    <h4 class="text-sm lg:text-base font-bold text-white mb-1.5 tracking-tight group-hover:text-emerald-200 transition-colors">Practical & Actionable</h4>
+                    <p class="text-xs text-emerald-100/75 leading-relaxed font-normal">Insights you can apply to drive real change.</p>
+                    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/0 to-transparent group-hover:via-emerald-400/50 transition-all duration-500 rounded-b-xl"></div>
                 </div>
-                <div class="flex items-start space-x-4 p-6 lg:p-8" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-users text-white text-lg"></i>
+
+                <!-- 3. Community & Collaboration -->
+                <div class="group relative p-5 lg:p-6 rounded-xl lg:rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] hover:border-emerald-400/30 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center flex-shrink-0 mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.3)] transition-all duration-300">
+                        <i class="fa-solid fa-users text-emerald-300 text-lg"></i>
                     </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white mb-1">Community & Collaboration</h4>
-                        <p class="text-xs text-gray-300 leading-relaxed">A space to connect, learn, and grow together.</p>
-                    </div>
+                    <h4 class="text-sm lg:text-base font-bold text-white mb-1.5 tracking-tight group-hover:text-emerald-200 transition-colors">Community & Collaboration</h4>
+                    <p class="text-xs text-emerald-100/75 leading-relaxed font-normal">A space to connect, learn, and grow together.</p>
+                    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/0 to-transparent group-hover:via-emerald-400/50 transition-all duration-500 rounded-b-xl"></div>
                 </div>
-                <div class="flex items-start space-x-4 p-6 lg:p-8" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <i class="fa-solid fa-globe text-white text-lg"></i>
+
+                <!-- 4. For a Better Future -->
+                <div class="group relative p-5 lg:p-6 rounded-xl lg:rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.06] hover:border-emerald-400/30 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400/20 to-emerald-600/10 border border-emerald-400/30 flex items-center justify-center flex-shrink-0 mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.3)] transition-all duration-300">
+                        <i class="fa-solid fa-globe text-emerald-300 text-lg"></i>
                     </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white mb-1">For a Better Future</h4>
-                        <p class="text-xs text-gray-300 leading-relaxed">Building awareness and action toward a sustainable world.</p>
-                    </div>
+                    <h4 class="text-sm lg:text-base font-bold text-white mb-1.5 tracking-tight group-hover:text-emerald-200 transition-colors">For a Better Future</h4>
+                    <p class="text-xs text-emerald-100/75 leading-relaxed font-normal">Building awareness and action toward a sustainable world.</p>
+                    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400/0 to-transparent group-hover:via-emerald-400/50 transition-all duration-500 rounded-b-xl"></div>
                 </div>
+
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- ====== CARBONTALK ACADEMY & TRAINING PROGRAMS ====== -->
-    <section class="w-full py-16 lg:py-24 bg-gray-50">
+    <section class="w-full pt-20 pb-16 lg:pt-28 lg:pb-24 bg-gray-50">
         <div class="max-w-[1600px] mx-auto px-4 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
