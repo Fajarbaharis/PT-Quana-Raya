@@ -8,7 +8,6 @@
     <section class="relative w-full h-[550px] flex items-start pt-20">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <!-- URL Gambar Sementara, ganti dengan gambar industri/solar panel asli -->
             <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276" 
                  alt="Industrial Sustainability" 
                  class="w-full h-full object-cover object-center">
@@ -17,7 +16,7 @@
         </div>
 
         <div class="max-w-[1600px] mx-auto px-4 lg:px-8 w-full relative z-10">
-            <div class="lg:w-3/5">
+            <div class="lg:w-3/5" data-aos="fade-up" data-aos-duration="1000">
                 <span class="text-[11px] font-bold text-primary tracking-widest uppercase block mb-3">ABOUT QRST</span>
                 
                 <h1 class="text-4xl lg:text-[50px] font-extrabold text-primary-dark mb-5 leading-[1.1] tracking-tight">
@@ -38,11 +37,11 @@
 
     <!-- FLOATING VISION, MISSION, VALUES BOX -->
     <section class="relative z-20 w-full px-4 lg:px-8 -mt-24 mb-16">
-        <div class="max-w-[1600px] mx-auto bg-white rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] overflow-hidden">
+        <div class="max-w-[1600px] mx-auto bg-white rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] overflow-hidden" data-aos="fade-up" data-aos-duration="800">
             <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
                 
                 <!-- Vision -->
-                <div class="p-8 lg:p-10">
+                <div class="p-8 lg:p-10" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-start space-x-4">
                         <i class="fa-solid fa-bullseye text-4xl text-primary mt-1"></i>
                         <div>
@@ -55,7 +54,7 @@
                 </div>
 
                 <!-- Mission -->
-                <div class="p-8 lg:p-10">
+                <div class="p-8 lg:p-10" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-start space-x-4">
                         <i class="fa-solid fa-mountain-sun text-4xl text-primary mt-1"></i>
                         <div>
@@ -79,7 +78,7 @@
                 </div>
 
                 <!-- Core Values -->
-                <div class="p-8 lg:p-10">
+                <div class="p-8 lg:p-10" data-aos="fade-up" data-aos-delay="300">
                     <h3 class="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">OUR CORE VALUES</h3>
                     <div class="grid grid-cols-2 gap-x-4 gap-y-4">
                         <div class="flex items-start space-x-2">
@@ -131,7 +130,7 @@
             <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
                 
                 <!-- Kiri: Penjelasan & Box Hijau -->
-                <div class="lg:w-[35%] flex flex-col">
+                <div class="lg:w-[35%] flex flex-col" data-aos="fade-right" data-aos-duration="800">
                     <span class="text-[11px] font-bold text-accent-lightgreen tracking-widest uppercase block mb-2">WHO WE ARE</span>
                     <h2 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">
                         Built for Today.<br>Committed for Tomorrow.
@@ -144,7 +143,7 @@
                     </p>
 
                     <!-- Box Hijau Tua -->
-                    <div class="bg-primary-dark rounded-xl p-6 relative overflow-hidden flex-grow shadow-lg">
+                    <div class="bg-primary-dark rounded-xl p-6 relative overflow-hidden flex-grow shadow-lg" data-aos="fade-up" data-aos-delay="200">
                         <!-- BG Image Overlay daun/embun -->
                         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center"></div>
                         <div class="relative z-10">
@@ -186,7 +185,7 @@
                 <!-- Kanan: 4 Grid Image Cards -->
                 <div class="lg:w-[65%] grid grid-cols-1 sm:grid-cols-2 gap-5 mt-8 lg:mt-0">
                     <!-- Card 1 -->
-                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
                         <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format&fit=crop" alt="Engineers" class="w-full h-36 object-cover">
                         <div class="p-4">
                             <h4 class="text-sm font-bold text-gray-900 mb-1">PROFESSIONAL EXPERTISE</h4>
@@ -194,15 +193,15 @@
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition relative">
+                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition relative" data-aos="fade-up" data-aos-delay="200">
                         <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" alt="Technology" class="w-full h-36 object-cover">
-                        <!-- Mockup CO2 overlay icon -->                        <div class="p-4">
+                        <div class="p-4">
                             <h4 class="text-sm font-bold text-gray-900 mb-1">DATA & TECHNOLOGY</h4>
                             <p class="text-[11px] text-gray-600 leading-tight">Leveraging data, digital tools, and technology for accurate and actionable insights.</p>
                         </div>
                     </div>
                     <!-- Card 3 -->
-                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Handshake" class="w-full h-36 object-cover">
                         <div class="p-4">
                             <h4 class="text-sm font-bold text-gray-900 mb-1">TRUST & RELIABILITY</h4>
@@ -210,7 +209,7 @@
                         </div>
                     </div>
                     <!-- Card 4 -->
-                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="400">
                         <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop" alt="Plant in glass" class="w-full h-36 object-cover">
                         <div class="p-4">
                             <h4 class="text-sm font-bold text-gray-900 mb-1">SUSTAINABLE IMPACT</h4>
@@ -227,7 +226,7 @@
     <section class="w-full py-8 bg-gray-50 border-y border-gray-200">
         <div class="max-w-[1600px] mx-auto px-4 lg:px-8 flex items-center">
             
-            <div class="mr-8 min-w-[140px]">
+            <div class="mr-8 min-w-[140px]" data-aos="fade-right">
                 <span class="text-xs font-bold text-accent-lightgreen tracking-widest uppercase">OUR JOURNEY</span>
             </div>
 
@@ -239,7 +238,7 @@
                 <div class="absolute top-[21px] right-0 text-gray-300 text-xs z-0"><i class="fa-solid fa-play"></i></div>
 
                 <!-- Timeline Item 1 -->
-                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50">
+                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-12 h-12 rounded-full border-2 border-primary bg-white flex items-center justify-center mb-4">
                         <i class="fa-solid fa-users-gear text-primary text-base"></i>
                     </div>
@@ -251,7 +250,7 @@
                 </div>
 
                 <!-- Timeline Item 2 -->
-                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50">
+                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-12 h-12 rounded-full border-2 border-primary bg-white flex items-center justify-center mb-4">
                         <i class="fa-solid fa-chart-column text-primary text-base"></i>
                     </div>
@@ -263,7 +262,7 @@
                 </div>
 
                 <!-- Timeline Item 3 -->
-                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50">
+                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-12 h-12 rounded-full border-2 border-primary bg-white flex items-center justify-center mb-4">
                         <i class="fa-solid fa-book-open text-primary text-base"></i>
                     </div>
@@ -275,7 +274,7 @@
                 </div>
 
                 <!-- Timeline Item 4 -->
-                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50">
+                <div class="relative z-10 flex flex-col items-center w-1/4 px-3 bg-gray-50" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-12 h-12 rounded-full border-2 border-primary bg-white flex items-center justify-center mb-4">
                         <i class="fa-solid fa-earth-americas text-primary text-base"></i>
                     </div>
@@ -296,7 +295,7 @@
             <div class="flex flex-col lg:flex-row items-stretch gap-6">
                 
                 <!-- Left Text -->
-                <div class="lg:w-1/4 flex flex-col justify-center">
+                <div class="lg:w-1/4 flex flex-col justify-center" data-aos="fade-right" data-aos-duration="800">
                     <span class="text-[11px] font-bold text-accent-lightgreen tracking-widest uppercase block mb-2">OUR PEOPLE</span>
                     <h2 class="text-2xl font-extrabold text-gray-900 leading-tight mb-3">
                         Passionate. Competent.<br>Purpose-Driven.
@@ -307,12 +306,12 @@
                 </div>
 
                 <!-- Center Image (Tim meeting) -->
-                <div class="lg:w-2/4">
+                <div class="lg:w-2/4" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
                     <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Our Team Collaborating" class="w-full h-full min-h-[220px] object-cover rounded-xl shadow-sm">
                 </div>
 
                 <!-- Right Commitment Box -->
-                <div class="lg:w-1/4 bg-[#f2f7f5] rounded-xl relative overflow-hidden flex flex-col justify-center p-6 border border-gray-100 shadow-sm">
+                <div class="lg:w-1/4 bg-[#f2f7f5] rounded-xl relative overflow-hidden flex flex-col justify-center p-6 border border-gray-100 shadow-sm" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
                     <!-- Daun background samping kanan -->
                     <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=400&auto=format&fit=crop" class="absolute -right-10 top-0 bottom-0 h-full w-24 object-cover opacity-60 mix-blend-multiply" alt="Leaves">
                     
@@ -346,7 +345,7 @@
     <!-- 5 ICONS BANNER (DARK GREEN) -->
     <section class="w-full bg-primary-dark py-5 mt-auto">
         <div class="max-w-[1600px] mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap lg:flex-nowrap justify-between items-center gap-4">
+            <div class="flex flex-wrap lg:flex-nowrap justify-between items-center gap-4" data-aos="fade-up" data-aos-duration="800">
                 
                 <div class="flex items-center space-x-3 w-[48%] lg:w-auto">
                     <i class="fa-solid fa-users-viewfinder text-2xl text-accent-lightgreen"></i>
